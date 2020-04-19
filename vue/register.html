@@ -26,14 +26,14 @@
   <div class="container">
 <div class="row justify-content-center ">
 
-      <div class="col-lg-7">
+      <div class="col-lg-8">
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card o-hidden border-0 shadow-lg my-5 ">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
           <div class="col align-self-center">
-            <div class="p-5">
+            <div class="p-4">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Créer un compte!</h1>
               </div>
@@ -50,6 +50,25 @@
                   <div class="col-sm-6">
                     <input type="text" class="form-control  " id="prenom_ins" name="prenom_ins" placeholder="Prénom" required>
                   </div>
+                </div>
+<!-- Profession  -->                
+                <div class="form-group">
+                  <select class="form-control custom-select" id="profession_ins" style="" name="profession_ins" required>
+                    <option selected disabled> Profession ... </option> 
+                    <option value="etudiant"> Etudiant(e)</option>
+                    <option value="enseignant">Enseignant(e)</option>
+                    
+                  </select> 
+  </div>
+<!-- etablissement -->
+                <div class="form-group">
+                  <select class="form-control custom-select" id="etablissement_ins" style="" name="etablissement_ins" required>
+                    <option disabled selected>Etablissement ... </option> 
+                    <option value="ENIB">École Nationale d'Ingénieurs de Brest</option>
+                    <option value="PNBI">Pôle Numérique Brest Iroise</option>
+                    <option value="IUEM">Institut Universitaire Européen de la Mer</option>
+                    
+                  </select> 
                 </div>
 <!-- Nationalite -->                
                 <div class="form-group">
