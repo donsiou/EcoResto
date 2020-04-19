@@ -37,30 +37,57 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Créer un compte!</h1>
               </div>
-              <form class="user">
+              <form class="user" method="POST" action="#">
+                  
+
                 <div class="form-group row">
+<!-- nom -->               
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="nom" name="nom" placeholder="Nom">
+                    <input type="text" class="form-control  " id="nom_ins" name="nom_ins" placeholder="Nom" required>
                   </div>
+<!-- Prenom -->       
+                            
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="prenom" name="prenom" placeholder="Prénom">
+                    <input type="text" class="form-control  " id="prenom_ins" name="prenom_ins" placeholder="Prénom" required>
                   </div>
                 </div>
+<!-- Nationalite -->                
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="email_ins" name="email_ins"  placeholder="Adresse e-mail">
+                  <select class="form-control custom-select" id="nationalite_ins" style="" name="nationalite_ins" required>
+                    <option disabled selected> Nationalité... </option> 
+                    <option value="Maroc">Marocain(e)</option>
+                    <option value="Tunisie">Tunisien(ne)</option>
+                    <option value="France">Français(e)</option>
+                    
+                  </select> 
+  </div>         
+
+<!-- Email -->               
+                <div class="form-group">
+                  <input type="email" class="form-control  " id="email_ins" name="email_ins"  placeholder="Adresse e-mail" required>
                 </div>
-                <div class="form-group row">
+<!-- Login --> 
+                <div class="form-group row ">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="mdp_ins" name="mdp_ins" placeholder="Mot de Pass ">
+                    <input type="text" class="form-control  " id="login_ins" name="login_ins" placeholder="Login">
                   </div>
+<!--¨Mot de passe -->                   
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                    <input type="password" class="form-control  " id="mdp_ins" name="mdp_ins" placeholder="Mot de Passe " required>
                   </div>
                 </div>
-                 <button type="submit"  class=" btn btn-primary btn-user btn-block ">Inscription
+
+                  <div class="row">
+                    <div class="col">
+                 <button type="submit"  class=" btn btn-primary  btn-block ">Inscription
                       </button>
+                    </div>
+                    <div class="col">
+                      <a href="login.html" class="btn btn-secondary  btn-block">Annuler
+                      </a>
+                    </div>
+                  </div>
                
-                
               </form>
               <hr>
               <div class="text-center">
