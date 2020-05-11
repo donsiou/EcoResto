@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" href="img/logo.png"/>
+
+  <title>EcoResto - inscription</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary ">
+
+  <div class="container">
+<div class="row justify-content-center ">
+
+      <div class="col-lg-8">
+
+    <div class="card o-hidden border-0 shadow-lg my-5 ">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col align-self-center">
+            <div class="p-4">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Créer un compte!</h1>
+              </div>
+              <form class="user" method="POST" action="#">
+                  
+
+                <div class="form-group row">
+<!-- nom -->               
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control  " id="nom_ins" name="nom_ins" placeholder="Nom" required>
+                  </div>
+<!-- Prenom -->       
+                            
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control  " id="prenom_ins" name="prenom_ins" placeholder="Prénom" required>
+                  </div>
+                </div>
+<!-- Profession  -->                
+                <div class="form-group row">
+                	<div class="col-sm-6 mb-3 mb-sm-0">
+                  <select class="form-control custom-select" id="profession_ins" style="" name="profession_ins" required>
+                    <option selected disabled> Profession ... </option> 
+                    <option value="Etudiant"> Etudiant(e)</option>
+                    <option value="Enseignant_Personnel">Enseignant(e)/Personnel de l'ecole</option>
+                    <option value="Stagiaire"> Stagiaire </option>
+                    <option value="Admin"> Admin </option>
+                    <option value="Personnel_RU"> Personnel de RU</option>
+                  </select> 
+  </div>
+<!-- etablissement -->
+                <div class="col-sm-6">
+                	
+
+                  <select class="form-control custom-select" id="etablissement_ins" style="" name="etablissement_ins" required>
+                    <option disabled selected>Etablissement ... </option> 
+                    <option value="ENIB">École Nationale d'Ingénieurs de Brest</option>
+                    <option value="PNBI">Pôle Numérique Brest Iroise</option>
+                    <option value="IUEM">Institut Universitaire Européen de la Mer</option>
+                    
+                  </select> 
+              </div>
+                </div>
+<!-- Nationalite -->                
+               <div class="form-group row">
+                	<div class="col-sm-6 mb-3 mb-sm-0">
+
+                  <select class="form-control custom-select" id="nationalite_ins" style="" name="nationalite_ins" required>
+                    <option disabled selected> Nationalité... </option> 
+                    <option value="Maroc">Marocain(e)</option>
+                    <option value="Tunisie">Tunisien(ne)</option>
+                    <option value="France">Français(e)</option>
+                    
+                  </select> 
+              </div>
+              <div class="col-sm-6">
+                  		<input type="date" class="form-control  " id="dateNaissance_ins" name="dateNaissance_ins"  placeholder="Date de Naissance" required>
+                  	</div>
+                  </div>
+
+          
+
+<!-- Email -->               
+                <div class="form-group">
+                  		<input type="email" class="form-control  " id="email_ins" name="email_ins"  placeholder="Adresse e-mail" required>
+                  	</div>
+<!-- Login --> 
+                <div class="form-group row ">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control  " id="login_ins" name="login_ins" placeholder="Login">
+                  </div>
+<!--¨Mot de passe -->                   
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control  " id="mdp_ins" name="mdp_ins" placeholder="Mot de Passe " required>
+                  </div>
+                </div>
+
+                  <div class="row">
+                    <div class="col">
+                 <button type="submit"  class=" btn btn-primary  btn-block ">Inscription
+                      </button>
+                    </div>
+                    <div class="col">
+                      <a href="login.html" class="btn btn-secondary  btn-block">Annuler
+                      </a>
+                    </div>
+                  </div>
+               
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" href="login.html">Vous avez déjà un compte? se connecter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
