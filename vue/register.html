@@ -52,7 +52,8 @@
                   </div>
                 </div>
 <!-- Profession  -->                
-                <div class="form-group">
+                <div class="form-group row">
+                	<div class="col-sm-6 mb-3 mb-sm-0">
                   <select class="form-control custom-select" id="profession_ins" style="" name="profession_ins" required>
                     <option selected disabled> Profession ... </option> 
                     <option value="Etudiant"> Etudiant(e)</option>
@@ -63,7 +64,9 @@
                   </select> 
   </div>
 <!-- etablissement -->
-                <div class="form-group">
+                <div class="col-sm-6">
+                	
+
                   <select class="form-control custom-select" id="etablissement_ins" style="" name="etablissement_ins" required>
                     <option disabled selected>Etablissement ... </option> 
                     <option value="ENIB">École Nationale d'Ingénieurs de Brest</option>
@@ -71,9 +74,12 @@
                     <option value="IUEM">Institut Universitaire Européen de la Mer</option>
                     
                   </select> 
+              </div>
                 </div>
 <!-- Nationalite -->                
-                <div class="form-group">
+               <div class="form-group row">
+                	<div class="col-sm-6 mb-3 mb-sm-0">
+
                   <select class="form-control custom-select" id="nationalite_ins" style="" name="nationalite_ins" required>
                     <option disabled selected> Nationalité... </option> 
                     <option value="Maroc">Marocain(e)</option>
@@ -81,17 +87,18 @@
                     <option value="France">Français(e)</option>
                     
                   </select> 
-  </div>         
-
-<!-- Email -->               
-                <div class="form-group row">
-                	<div class="col-sm-6 mb-3 mb-sm-0">
-                  		<input type="email" class="form-control  " id="email_ins" name="email_ins"  placeholder="Adresse e-mail" required>
-                  	</div>
-                  	<div class="col-sm-6">
+              </div>
+              <div class="col-sm-6">
                   		<input type="date" class="form-control  " id="date_ins" name="date_ins"  placeholder="Date de Naissance" required>
                   	</div>
-                </div>
+                  </div>
+
+          
+
+<!-- Email -->               
+                <div class="form-group">
+                  		<input type="email" class="form-control  " id="email_ins" name="email_ins"  placeholder="Adresse e-mail" required>
+                  	</div>
 <!-- Login --> 
                 <div class="form-group row ">
                   <div class="col-sm-6 mb-3 mb-sm-0">
