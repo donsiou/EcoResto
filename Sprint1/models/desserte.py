@@ -1,18 +1,17 @@
 from Sprint1.models.utilisateur import Utilisateur
+from django.db import models
 
 
 class Desserte(Utilisateur):
     """docstring for Desserte"""
 
+    _tel = models.CharField(max_length=20)
+
     def __del__(self):
         Utilisateur.__del__(self)
 
-    def __init__(self):
-        pass
-
     def __init__(self, login, password):
         Utilisateur.__init__(self, login, password)
-
 
     @staticmethod
     def authentification(self, login, password):
@@ -37,4 +36,3 @@ class Desserte(Utilisateur):
         pass
 
     # mutateurs et accesseurs
-

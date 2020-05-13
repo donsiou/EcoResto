@@ -1,32 +1,35 @@
 from django.db import models
+from datetime import date
 
 
 class Utilisateur(models.Model):
     """docstring for Utilisateur"""
-    _password = models.CharField(max_length=100)
-    _login = models.CharField(max_length=100)
-    _nom = models.CharField(max_length=100)
-    _prenom = models.CharField(max_length=100)
+    _password = models.CharField(max_length=100, null=False, blank=False)
+    _login = models.CharField(max_length=100, unique=True, blank=False, null=False)
+    _nom = models.CharField(max_length=100, null=False, blank=False)
+    _prenom = models.CharField(max_length=100, null=False, blank=False)
+    _dateNaissance = models.DateField(null=False, blank=False)
+    _dateInscription = models.DateField(null=False, default=date.today())
     _nationalite = models.CharField(max_length=100)
-    _email = models.EmailField(max_length=255)
+    _email = models.EmailField(max_length=255, null=False, blank=False)
     _profession = models.CharField(max_length=100)
-    _tel = models.CharField(max_length=20)
 
     def __del__(self):
         print("je suis le destructeur")
 
     # constructeur par defeaut c'est le  mm que par initalization 2 on 1
-    def __init__(self, login="", password=""):
+    def __init__(self, login="", password="", nom="", prenom="", nationalite="", email=""):
         self._password = password
         self._login = login
-        self._nom = ""
-        self._prenom = ""
-        self._nationalite = ""
-        self._email = ""
-        self._profession = ""
-        self._tel = ""
+        self._nom = nom
+        self._prenom = prenom
+        self._nationalite = nationalite
+        self._email = email
+        self._profession = profession
+        self._tel = tel
 
     # comme constructeur par recopie
+
     def clone(self, u):
         self._password = u._password
         self._login = u._login

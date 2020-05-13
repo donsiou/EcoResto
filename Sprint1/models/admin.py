@@ -1,8 +1,11 @@
 from Sprint1.models.utilisateur import Utilisateur
+from django.db import models
 
 
 class Admin(Utilisateur):
     """docstring for Admin"""
+
+    _tel = models.CharField(max_length=20)
 
     def __del__(self):
         Utilisateur.__del__(self)
@@ -16,13 +19,13 @@ class Admin(Utilisateur):
     def authentification(self, login, password):
         Utilisateur.authentification(self, login, password)
 
-    def inscription(self,log,pwd, userTab):
+    def inscription(self, log, pwd, userTab):
         if (self.exist(userTab) != True):
-            print("") # requete SQL
-        else :
+            print("")  # requete SQL
+        else:
             print("Vous etes deja presant dans BD")
 
-    def exist(self,userTab):
+    def exist(self, userTab):
         Utilisateur.exist(self, userTab)
 
     def supprimer(self):

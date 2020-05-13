@@ -1,8 +1,10 @@
 from Sprint1.models.utilisateur import Utilisateur
+from django.db import models
 
 
 class Client(Utilisateur):
     """docstring for Client"""
+    _etablissement = models.CharField(max_length=20)
 
     def __del__(self):
         Utilisateur.__del__(self)
