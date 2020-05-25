@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Ingredient(models.Model):
-    _nomIngred = models.CharField(max_length=100)
+    _nomIngred = models.CharField(max_length=100, null=False)
     _prixIngred = models.FloatField()
     _quantiteIngred = models.FloatField()
     _quantiteStock = models.FloatField()
-    _typeIngred = models.CharField(max_length=100)
+    _typeIngred = models.CharField(max_length=100, null=False)
 
     def __del__(self):
         print("del")

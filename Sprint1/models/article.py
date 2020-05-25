@@ -4,11 +4,11 @@ from django.db import models
 class Article(models.Model):
     """docstring for Accueil"""
     _idArticle = models.AutoField(primary_key=True)
-    _nom = models.CharField(max_length=50,none=False,blank=False)
-    _type = models.CharField(max_length=100,none=False,blank=False)
-    _quantite = models.FloatField(none=False,blank=False)
-    _image = models.ImageField(blank=False)
-    _prix = models.PositiveSmallIntegerField(none=False,blank=False)
+    _nom = models.CharField(max_length=50, blank=False, null=False)
+    _type = models.CharField(max_length=100,blank=False, null=False)
+    _quantite = models.FloatField(null=False, blank=False)
+    _image = models.ImageField()
+    _prix = models.PositiveSmallIntegerField(null=False,blank=False)
     _description = models.TextField()
     _diponible = models.BooleanField(default=True)
 

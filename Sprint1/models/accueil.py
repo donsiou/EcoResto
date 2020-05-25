@@ -5,7 +5,7 @@ from django.db import models
 class Accueil(Utilisateur):
     """docstring for Accueil"""
 
-    _tel = models.CharField(max_length=20)
+    _tel = models.CharField(max_length=20, null=True)
 
     def __del__(self):
         Utilisateur.__del__(self)
