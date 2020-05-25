@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from django.utils import timezone
 
 
 class Utilisateur(models.Model):
@@ -9,7 +9,7 @@ class Utilisateur(models.Model):
     _nom = models.CharField(max_length=100, null=False, blank=False)
     _prenom = models.CharField(max_length=100, null=False, blank=False)
     _dateNaissance = models.DateField(null=False, blank=False)
-    _dateInscription = models.DateField(null=False, default=date.today())
+    _dateInscription = models.DateField(null=False, default=timezone.now)
     _nationalite = models.CharField(max_length=100)
     _email = models.EmailField(max_length=255, null=False, blank=False)
     _profession = models.CharField(max_length=100)
