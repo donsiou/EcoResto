@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 
@@ -14,59 +15,31 @@ class Utilisateur(models.Model):
     _email = models.EmailField(max_length=255, null=False, blank=False)
     _profession = models.CharField(max_length=100)
 
-    def __del__(self):
-        print("je suis le destructeur")
 
-    # constructeur par defeaut c'est le  mm que par initalization 2 on 1
-    def __init__(self, login="", password="", nom="", prenom="", nationalite="", email=""):
-        self._password = password
-        self._login = login
-        self._nom = nom
-        self._prenom = prenom
-        self._nationalite = nationalite
-        self._email = email
-        self._profession = profession
-        self._tel = tel
 
-    # comme constructeur par recopie
+    #@staticmethod
+    def authentification(self, request, login=None, password=None):
+        try:
+            user= Utilisateur.objects.get(_email=login)
+            if user.check_password(password):
+                return user
+            else :
+                return None
+        except Utilisateur.DoesNotExist:
+            raise ValidationError("Infos fourni erronée")
 
-    def clone(self, u):
-        self._password = u._password
-        self._login = u._login
-        self._nom = u._nom
-        self._prenom = u._prenom
-        self._nationalite = u._nationalite
-        self._email = u._email
-        self._profession = u._profession
-        self._tel = u._tel
-
-    @staticmethod
-    def authentification(self, login, password):
-        pass
+    def get_user(self, id):
+        try:
+            return Utilisateur.objects.get(pk=id)
+        except Utilisateur.DoesNotExist:
+            return None
 
     def inscription(self):
         raise  # ( ' methode abstraite ' )
 
-    def exist(self, tabUsers):
-        for u in tabUsers:
-            if self._login == u.getLogin() and self._password == u.getPassword():
-                return True
-            else:
-                return False
 
-    def supprimer(self, tabUser):
-        i = 0
-        for u in tabUser:
 
-            if self.exist(tabUser):
-                tabUser.pop(i)
-                return True
-            else:
-                return False
-            i = i + 1
 
-    def modifier(self):
-        pass
 
     # mutateurs et accesseurs
     def getPassword(self):

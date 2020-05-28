@@ -6,7 +6,7 @@ class Client(Utilisateur):
     """docstring for Client"""
     _etablissement = models.CharField(max_length=20, null=False)
 
-    def __del__(self):
+    """def __del__(self):
         Utilisateur.__del__(self)
 
     def __init__(self, login, password, etablissement):
@@ -37,7 +37,7 @@ class Client(Utilisateur):
 
     def noter(self):
         pass
-
+"""
     # mutateurs et accesseurs
     def getEtablissement(self):
         return self._etablissement
