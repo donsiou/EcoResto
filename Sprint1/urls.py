@@ -4,5 +4,9 @@ from Sprint1 import views
 
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.indexOuma),
+    path('Ajouter_Article', views.Ajouter_Article),
+    path('Articles', views.Articles),
+
+
 ]
