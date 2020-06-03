@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from Sprint1 import views
 
-urlpatterns = [
-    path('', views.indexPage),
+urlpatterns = {
+    path('', include('Sprint1.urls'), name='home'),
+    path('index',views.index),
     path('admin/', admin.site.urls),
     path('sprint1/', include('Sprint1.urls')),
-]
+    path('Login',views.Login,name='Login'),
+    path('Register',views.Register,name='Register'),
+
+}
