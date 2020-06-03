@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+	
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+fetch('menu.html')
+  .then(data => data.text())
+  .then(html => document.getElementById('elementID').innerHTML = html);
+</script>
+
+<div id='elementID'> </div>

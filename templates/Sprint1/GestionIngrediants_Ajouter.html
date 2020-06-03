@@ -1,0 +1,71 @@
+{% extends "Sprint1/index.html" %}
+<title> {% block titre %} Gestion des Ingrediants - Ajouter {% endblock %}</title>
+
+{% block main %}
+
+            <div class="card-header py-3">
+              <div class="row ">
+                <div class="col">
+              <h6 class="m-0 font-weight-bold text-primary"> Ajouter un Ingrediant </h6>
+            </div>
+            </div>
+            <div class="card-body">
+              <form class="user p-3" method="POST" action="#">
+<!-- 1er ligne  -->
+                  <div class="form-group row">
+                        <!-- Ingrediant -->
+
+                     <div class="col-sm-6">
+                        <input type="text" class="form-control  " id="Ingrediant" name="Ingrediant" placeholder="Ingrediant*" required>
+                    </div>
+                        <!-- Prix  -->
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control  " id="prix" name="prix" placeholder="Prix*" required>
+                      </div>
+                  </div>
+<!-- 2eme ligne  -->
+
+                  <div class="form-group row">
+                        <!-- Quantite -->
+                     <div class="col-sm-6">
+                        <input type="text" class="form-control  " id="quantite" name="quantite" placeholder="Quantite*" required>
+                    </div>
+                        <!-- Quantite stock  -->
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control  " id="quantite_stock" name="quantite_stock" placeholder="Quantite stock*" required>
+                      </div>
+                  </div>
+
+<!-- 3eme ligne  -->
+
+                  <div class="form-group row">
+                      <!-- type  -->
+                      <div class="col-sm-6">
+                         <input type="text" class="form-control  " id="type" name="type" placeholder="Type*" required>
+                      </div>
+                     <div class="col-sm-6">
+                      </div>
+
+                  </div>
+
+
+<!-- 5eme ligne -->
+                  <div class="form-group row justify-content-center">
+                    <div class="col-sm-4">
+                 <button type="submit"  class=" btn btn-primary  btn-block ">Ajouter
+                      </button>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="Ingrediants" class="btn btn-secondary  btn-block">Annuler
+                      </a>
+                    </div>
+                  </div>
+
+
+
+
+              </form>
+            </div>
+
+{% endblock %}
+
