@@ -1,4 +1,3 @@
-Sprint1/__pycache__/
-EcoResto/__pycache__/
-Sprint1/migrations/__pycache__/
-Sprint1/models/__pycache__/
+__pycache__
+db.sqlite3
+.idea

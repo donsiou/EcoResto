@@ -23,6 +23,7 @@ class Ingredient(models.Model):
     # False : L'ingredient existe déja
     # True : L'ingredient ajouté avec succé
     def ajouter(self):
+        print("Hello world !")
         if self.exist():
             return False
         self.save()
