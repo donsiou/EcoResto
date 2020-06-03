@@ -1,26 +1,26 @@
 {% extends "Sprint1/index.html" %}
-<title> {% block titre %} Gestion des Articles - Ajouter {% endblock %}</title>
+<title> {% block titre %} Gestion des Ingrediants - Ajouter {% endblock %}</title>
 
 {% block main %}
 
             <div class="card-header py-3">
               <div class="row ">
                 <div class="col">
-              <h6 class="m-0 font-weight-bold text-primary"> Ajouter un article </h6>
+              <h6 class="m-0 font-weight-bold text-primary"> Ajouter un Ingrediant </h6>
             </div>
             </div>
             <div class="card-body">
               <form class="user p-3" method="POST" action="#">
 <!-- 1er ligne  -->
                   <div class="form-group row">
-                        <!-- Article -->
+                        <!-- Ingrediant -->
 
                      <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="article" name="article" placeholder="Article*" required>
+                        <input type="text" class="form-control  " id="Ingrediant" name="Ingrediant" placeholder="Ingrediant*" required>
                     </div>
-                        <!-- type  -->
+                        <!-- Prix  -->
                       <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="type" name="type" placeholder="Type*" required>
+                        <input type="text" class="form-control  " id="prix" name="prix" placeholder="Prix*" required>
                       </div>
                   </div>
 <!-- 2eme ligne  -->
@@ -30,37 +30,24 @@
                      <div class="col-sm-6">
                         <input type="text" class="form-control  " id="quantite" name="quantite" placeholder="Quantite*" required>
                     </div>
-                        <!-- Prix  -->
+                        <!-- Quantite stock  -->
                       <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="prix" name="prix" placeholder="Prix*" required>
+                        <input type="text" class="form-control  " id="quantite_stock" name="quantite_stock" placeholder="Quantite stock*" required>
                       </div>
                   </div>
 
 <!-- 3eme ligne  -->
 
                   <div class="form-group row">
-                      <!-- Image  -->
+                      <!-- type  -->
                       <div class="col-sm-6">
-                          <label> Image </label>
-                        <input type="file" class="form-control  " id="image" name="image" placeholder="Image" accept="image/png, image/jpeg">
+                         <input type="text" class="form-control  " id="type" name="type" placeholder="Type*" required>
                       </div>
-                      <!--disponible-->
                      <div class="col-sm-6">
-                          <label > Disponible * :</label>
-                         <br>
-                        <input type="radio" id="oui" name="disponible" value="oui" checked required >
-                            <label for="oui">Oui</label>
-                         <br>
-                        <input type="radio" id="non" name="disponible" value="non" >
-                          <label for="non">Non</label>
                       </div>
 
                   </div>
-<!-- 4eme ligne  -->
-                        <!-- DESCRIPTION -->
-                    <div class="form-group">
-                         <textarea class="form-control" id="description" name="description" placeholder="Description" ></textarea>
-                     </div>
+
 
 <!-- 5eme ligne -->
                   <div class="form-group row justify-content-center">
