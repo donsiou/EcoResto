@@ -10,7 +10,8 @@
             </div>
             </div>
             <div class="card-body">
-              <form class="user p-3" method="POST" action="#">
+              <form class="user p-3" method="POST" action="#"><!-- Ajouté dans ce form une liste d'ou on peut selectionné les article qu'on veut associe a cet article -->
+                  {% csrf_token %}
 <!-- 1er ligne  -->
                   <div class="form-group row">
                         <!-- Article -->
@@ -48,10 +49,10 @@
                      <div class="col-sm-6">
                           <label > Disponible * :</label>
                          <br>
-                        <input type="radio" id="oui" name="disponible" value="oui" checked required >
+                        <input type="radio" id="oui" name="disponible" value="True" checked required >
                             <label for="oui">Oui</label>
                          <br>
-                        <input type="radio" id="non" name="disponible" value="non" >
+                        <input type="radio" id="non" name="disponible" value="False" >
                           <label for="non">Non</label>
                       </div>
 

@@ -1,53 +1,61 @@
 from django.db import models
 
+from Sprint1.models.ingredient import Ingredient
+
 
 class Article(models.Model):
     """docstring for Accueil"""
-    _idArticle = models.AutoField(primary_key=True)
     _nom = models.CharField(max_length=50, blank=False, null=False)
-    _type = models.CharField(max_length=100,blank=False, null=False)
+    _type = models.CharField(max_length=100, blank=False, null=False)
     _quantite = models.FloatField(null=False, blank=False)
     _image = models.ImageField()
-    _prix = models.PositiveSmallIntegerField(null=False,blank=False)
+    _prix = models.PositiveSmallIntegerField(null=False, blank=False)
     _description = models.TextField()
     _diponible = models.BooleanField(default=True)
+    _ingrediants = models.ManyToManyField(Ingredient, through='IngredientStock')
 
-    def __del__(self):
-        print("destructeur article")
-
-    def __init__(self, nom, type,quantite,prix,diponible,image="",description=""):
-        self._nom = nom
-        self._type = type
-        self._quantite = quantite
-        self._prix = prix
-        self._diponible = diponible
-        self._image = image
-        self._description = description
+    # _ingredient = models.ManyToManyField(Ingredient, through='IngredientStock', related_name='+')
+    # _quantiteIngred = models.ManyToManyField(Ingredient, related_name="_idArticle")
 
     def getAllIngredient(self):
-        pass
+        return self._ingrediants.all()
 
     def ajouter(self):
+        print("Hello world !")
+        if self.exist():
+            return False
+        self.save()
         return True
 
     def modifier(self):
+        if not self.exist():
+            return False
+        self.save()
         return True
 
     def supprimer(self):
+        if not self.exist():
+            return False
+        self.delete()
         return True
 
     def exist(self):
-        if (self._diponible):
+        i = Article.objects.filter(_nom__iexact=self._nom)
+        return i.count() > 0
+
+    def ajouterIngred(
+            self):  # resette = IngredientStock(_idArticle=pasta,_idIngrediant=tonno,_quantite=1);resette.save()
+        pass
+
+    def supprimerIngred(self, nomIngrd):  # makedmatch mais b ORM ex ==> pasta._ingrediants.remove(tonno)
+        ingrediant = Ingredient.objects.filter(_nomIngred=nomIngrd)
+        if ingrediant.exist():
+            self._ingrediants.remove(ingrediant)
             return True
-        return False
+        else:
+            return False
 
-    def ajouterIngred(self, nomIngrd, quantite):
-        pass
-
-    def supprimerIngred(self, nomIngrd):
-        pass
-
-    #mutateurs et accesseurs
+    # mutateurs et accesseurs
     def getNom(self):
         return self._nom
 

@@ -11,6 +11,7 @@
             </div>
             <div class="card-body">
               <form class="user p-3" method="POST" action="#">
+                  {% csrf_token %}
 <!-- 1er ligne  -->
                   <div class="form-group row">
                         <!-- Ingrediant -->
@@ -25,11 +26,11 @@
                   </div>
 <!-- 2eme ligne  -->
 
-                  <div class="form-group row">
-                        <!-- Quantite -->
+             <!--     <div class="form-group row">
+
                      <div class="col-sm-6">
                         <input type="text" class="form-control  " id="quantite" name="quantite" placeholder="Quantite*" required>
-                    </div>
+                    </div>-->
                         <!-- Quantite stock  -->
                       <div class="col-sm-6">
                         <input type="text" class="form-control  " id="quantite_stock" name="quantite_stock" placeholder="Quantite stock*" required>
