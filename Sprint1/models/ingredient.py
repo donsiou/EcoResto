@@ -66,16 +66,16 @@ class Ingredient(models.Model):
         return 0
 
     def getNom(self):
-        return self._nom
+        return self._nomIngred
 
     def setNom(self, nom):
-        self._nom = nom
+        self._nomIngred = nom
 
     def getPrix(self):
-        return self._prix
+        return self._prixIngred
 
     def setPrix(self, value):
-        self._prix = value
+        self._prixIngred = value
 
     def getQuantiteStock(self):
         return self._quantiteStock
@@ -84,7 +84,7 @@ class Ingredient(models.Model):
         self._quantiteStock = value
 
     def getType(self):
-        return self._type
+        return self._typeIngred
 
     def setType(self, value):
-        self._type = value
+        self._typeIngred = value

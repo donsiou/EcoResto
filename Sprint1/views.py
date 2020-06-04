@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect, render
 from Sprint1.models import Article, Ingredient, IngredientStock
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def Login(request):
     template = loader.get_template('Sprint1/login.html')
@@ -36,14 +36,23 @@ def Ajouter_Article(request):
 
 
 def Articles(request):
-    
+
     template = loader.get_template('Sprint1/GestionArticles_Afficher.html')
     return HttpResponse(template.render(request=request))
 
 
 def Ingrediants(request):
-    template = loader.get_template('Sprint1/GestionIngredients_Afficher.html')
-    return HttpResponse(template.render(request=request))
+
+    ingredient_list = Ingredient.objects.all()
+
+    #template = loader.get_template('Sprint1/GestionIngredients_Afficher.html')
+    # return HttpResponse(template.render(request=request))
+
+    context = {
+             'ingredient_list': ingredient_list
+         }
+    return render(request, 'Sprint1/GestionIngredients_Afficher.html', context)
+
 
 
 def Ajouter_Ingrediant(request):
