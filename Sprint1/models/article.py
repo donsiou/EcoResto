@@ -87,10 +87,10 @@ class Article(models.Model):
         self._type = value
 
     def getDisponible(self):
-        return self._disponible
+        return self._diponible
 
     def setDisponible(self, value):
-        self._disponible = value
+        self._diponible = value
 
     def getDescription(self):
         return self._description

@@ -36,9 +36,9 @@ def Ajouter_Article(request):
 
 
 def Articles(request):
-
-    template = loader.get_template('Sprint1/GestionArticles_Afficher.html')
-    return HttpResponse(template.render(request=request))
+    article_list = Article.objects.all()
+    context = {'article_list': article_list}
+    return render(request, 'Sprint1/GestionArticles_Afficher.html', context)
 
 
 def Ingrediants(request):
@@ -48,9 +48,7 @@ def Ingrediants(request):
     #template = loader.get_template('Sprint1/GestionIngredients_Afficher.html')
     # return HttpResponse(template.render(request=request))
 
-    context = {
-             'ingredient_list': ingredient_list
-         }
+    context = {'ingredient_list': ingredient_list}
     return render(request, 'Sprint1/GestionIngredients_Afficher.html', context)
 
 
