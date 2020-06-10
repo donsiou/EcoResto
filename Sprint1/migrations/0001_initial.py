@@ -13,15 +13,16 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+
         migrations.CreateModel(
             name='Article',
             fields=[
-                ('_idArticle', models.AutoField(primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('_nom', models.CharField(max_length=50)),
                 ('_type', models.CharField(max_length=100)),
                 ('_quantite', models.FloatField()),
                 ('_image', models.ImageField(upload_to='')),
-                ('_prix', models.PositiveSmallIntegerField()),
+                ('_prix', models.FloatField()),
                 ('_description', models.TextField()),
                 ('_diponible', models.BooleanField(default=True)),
             ],
@@ -30,14 +31,43 @@ class Migration(migrations.Migration):
             name='Ingredient',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('_nomIngred', models.CharField(max_length=100)),
+                ('_nomIngred', models.CharField(max_length=100, unique=True)),
                 ('_prixIngred', models.FloatField()),
-                ('_quantiteIngred', models.FloatField()),
                 ('_quantiteStock', models.FloatField()),
                 ('_typeIngred', models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
+            name='Menu',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('_date', models.DateField()),
+                ('_nomMenu', models.CharField(max_length=50)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='IngredientStock',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('_quantite', models.FloatField(null=True)),
+                ('_idArticle',
+                 models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='Sprint1.Article')),
+                ('_idIngrediant',
+                 models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='Sprint1.Ingredient')),
+            ],
+        ),
+        migrations.AddField(
+            model_name='article',
+            name='_ingrediants',
+            field=models.ManyToManyField(through='Sprint1.IngredientStock', to='Sprint1.Ingredient'),
+        ),
+        migrations.AddField(
+            model_name='article',
+            name='_menuAffecte',
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='Sprint1.Menu'),
+        ),
+        migrations.CreateModel(
+
             name='Utilisateur',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -83,14 +113,5 @@ class Migration(migrations.Migration):
                 ('_tel', models.CharField(max_length=20)),
             ],
             bases=('Sprint1.utilisateur',),
-        ),
-        migrations.CreateModel(
-            name='IngredientStock',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('_quantite', models.FloatField()),
-                ('_idArticle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Sprint1.Ingredient')),
-                ('_idIngrediant', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Sprint1.Article')),
-            ],
         ),
     ]

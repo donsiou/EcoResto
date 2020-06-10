@@ -25,24 +25,22 @@
                     </tr>
                   </thead>
                   <tbody>
+                  {% if ingredient_list  %}
+                      {% for ingrediant in ingredient_list %}
+
+
                     <tr>
-                      <td>Patte</td>
-                      <td>10</td>
-                      <td>20</td>
-                      <td>20</td>
-                      <td>XXXXX</td>
+
+                      <td>{{ ingrediant.getNom }} </td>
+                      <td>{{  ingrediant.getPrix }}</td>
+                      <td>{{  ingrediant.getQuantiteStock }}</td>
+                      <td>{{  ingrediant.getType }}</td>
+
                       <td ><a href="#" class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                      <a href="SupprimerIngerdient?id={{ ingrediant.id }}" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                     </tr>
-                    <tr>
-                      <td>poulet</td>
-                      <td>10</td>
-                      <td>20</td>
-                      <td>20</td>
-                      <td>XXXXX</td>
-                      <td ><a href="#" class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
-                    </tr>
+                      {% endfor %}
+                    {% endif %}
 
                   </tbody>
                 </table>

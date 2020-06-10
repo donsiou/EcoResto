@@ -1,0 +1,98 @@
+{% extends "Sprint1/index.html" %}
+{% load static %}
+<title> {% block titre %} EcoResto - Menu {% endblock %}</title>
+
+{% block menu %}
+
+ <!-- 1er ligne -->
+            <div class="row mb-2" >
+              <div class="card ml-4 mr-4" style="width: 100%;background: transparent;">
+                <div class="card-header bg-gradient-info text-gray-100  p-1 pl-2 pr-2">
+                  <div class="row  ">
+                        <div class="col"> Salade </div>
+                         <div class="col d-flex justify-content-end"><a href="Menus#salade" class="btn-link text-light"> afficher plus... </a>  </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-2 mb-0">
+  <!-- ################################### -->
+                    <div class="row"  >
+     <!-- boucle  -->
+            <div class="col-xl-2" >
+              <div class="card-img shadow h-100 py-1" >
+                 <a href="#salade?id">
+                    <img src="{% static 'Sprint1/article/salade.jpeg' %}"  style='height: 100%; width: 100%; object-fit: contain'>
+                   </a>
+              </div>
+            </div>
+     <!-- end boucle  -->
+                    </div>
+
+    <!-- ################################### -->
+                </div>
+
+              </div>
+              </div>
+    <!-- 2eme ligne -->
+            <div class="row mb-2" >
+              <!-- Default Card Example -->
+              <div class="card ml-4 mr-4" style="width: 100%;background: transparent; height: 100 ">
+                <div class="card-header bg-gradient-info text-gray-100 p-1 pl-2 pr-2">
+                    <div class="row  ">
+                        <div class="col"> Dessert</div>
+                         <div class="col d-flex justify-content-end"><a href="#dessert" class="btn-link text-light"> afficher plus... </a>  </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-2 mb-0">
+  <!-- ################################### -->
+                    <div class="row"  >
+     <!-- boucle  -->
+            <div class="col-xl-2" >
+              <div class="card-img shadow h-100 py-1" >
+                 <a href="#dessert?id">
+                    <img src="{% static 'Sprint1/article/chocolate-ice-cream.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'>
+                   </a>
+              </div>
+            </div>
+     <!-- end boucle  -->
+                    </div>
+
+    <!-- ################################### -->
+                </div>
+
+              </div>
+              </div>
+ <!-- 3eme ligne -->
+            <div class="row mb-2" >
+              <div class="card ml-4 mr-4" style="width: 100%;background: transparent; height: 100 ">
+                <div class="card-header bg-gradient-info text-gray-100  p-1 pl-2 pr-2">
+                   <div class="row  ">
+                        <div class="col"> Plat </div>
+                         <div class="col d-flex justify-content-end"><a href="#plat" class="btn-link text-light"> afficher plus... </a>  </div>
+                    </div>
+
+                </div>
+
+                <div class="card-body p-2 mb-0">
+  <!-- ################################### -->
+                    <div class="row"  >
+     <!-- boucle  -->
+            <div class="col-xl-2" >
+              <div class="card-img shadow h-100 py-1">
+                 <a href="#plat?id">
+                    <img src="{% static 'Sprint1/article/hamburger.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'>
+                   </a>
+              </div>
+            </div>
+     <!-- end boucle  -->
+                    </div>
+
+    <!-- ################################### -->
+                </div>
+
+              </div>
+              </div>
+
+{% endblock %}
+

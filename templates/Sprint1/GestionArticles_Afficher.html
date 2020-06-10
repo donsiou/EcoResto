@@ -1,4 +1,5 @@
 {% extends "Sprint1/index.html" %}
+
 <title> {% block titre %} Gestion des Articles  {% endblock %}</title>
 
 {% block main %}
@@ -26,26 +27,25 @@
                     </tr>
                   </thead>
                   <tbody>
+                  {% if article_list %}
+                      {% for article in article_list %}
+
+
                     <tr>
-                      <td>Pizza</td>
-                      <td>végétarien</td>
-                      <td>20</td>
-                      <td>3</td>
-                      <td>....................</td>
-                      <td>oui</td>
+
+                      <td>{{  article.getNom }}</td>
+                      <td>{{  article.getType }}</td>
+                      <td>{{  article.getQuantite }}</td>
+                      <td>{{  article.getPrix }}</td>
+                      <td>{{  article.getDescription }}</td>
+                      <td>{{  article.getDisponible }}</td>
+
+
                       <td ><a href="#" class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                      <a href="SupprimerArticle?id={{article.id }}" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
                     </tr>
-                    <tr>
-                      <td>Poulet</td>
-                      <td>Halal</td>
-                      <td>7</td>
-                      <td>5</td>
-                      <td>........</td>
-                      <td>oui</td>
-                      <td ><a href="#" class="btn btn-outline-primary"><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
-                    </tr>
+                      {% endfor %}
+                    {% endif %}
 
                   </tbody>
                 </table>
@@ -53,6 +53,7 @@
             </div>
 
 {% endblock %}
+
 
 
 

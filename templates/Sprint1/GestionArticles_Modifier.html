@@ -6,22 +6,25 @@
             <div class="card-header py-3">
               <div class="row ">
                 <div class="col">
-              <h6 class="m-0 font-weight-bold text-primary"> Ajouter un article </h6>
+              <h6 class="m-0 font-weight-bold text-primary"> Modifier un article </h6>
             </div>
             </div>
             <div class="card-body">
-              <form class="user p-3" method="POST" action="#"><!-- Ajouté dans ce form une liste d'ou on peut selectionné les ingredients qu'on veut associe a cet article -->
+{% if articles %}
+    {% for article in articles %}
+
+              <form class="user p-3" method="POST" action=""><!-- Ajouté dans ce form une liste d'ou on peut selectionné les ingredients qu'on veut associe a cet article -->
                   {% csrf_token %}
 <!-- 1er ligne  -->
                   <div class="form-group row">
                         <!-- Article -->
-
+                        <input type="hidden" value="{{  article.getId }}" name="id">
                      <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="article" name="article" placeholder="Article*" required>
+                       Article*  <input type="text" class="form-control  " id="article" name="article" placeholder="Article*" value="{{  article.getNom }}" required>
                     </div>
                         <!-- type  -->
                       <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="type" name="type" placeholder="Type*" required>
+                        Type* <input type="text" class="form-control  " id="type" name="type" placeholder="Type*" value="{{  article.getType }}" required>
                       </div>
                   </div>
 <!-- 2eme ligne  -->
@@ -29,11 +32,11 @@
                   <div class="form-group row">
                         <!-- Quantite -->
                      <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="quantite" name="quantite" placeholder="Quantite*" required>
+                        Quantite* <input type="text" class="form-control  " id="quantite" name="quantite" placeholder="Quantite*" value="{{  article.getQuantite }}" required>
                     </div>
                         <!-- Prix  -->
                       <div class="col-sm-6">
-                        <input type="text" class="form-control  " id="prix" name="prix" placeholder="Prix*" required>
+                        Prix* <input type="text" class="form-control  " id="prix" name="prix" placeholder="Prix*" value="{{  article.getPrix }}" required>
                       </div>
                   </div>
 
@@ -49,11 +52,19 @@
                      <div class="col-sm-6">
                           <label > Disponible * :</label>
                          <br>
+    {% if article.getDisponible %}
                         <input type="radio" id="oui" name="disponible" value="True" checked required >
                             <label for="oui">Oui</label>
                          <br>
                         <input type="radio" id="non" name="disponible" value="False" >
                           <label for="non">Non</label>
+    {% else %}
+                        <input type="radio" id="oui" name="disponible" value="True"  required >
+                            <label for="oui">Oui</label>
+                         <br>
+                        <input type="radio" id="non" name="disponible" value="False" checked >
+                          <label for="non">Non</label>
+    {% endif %}
                       </div>
 
                   </div>
@@ -61,34 +72,16 @@
 
                         <!-- DESCRIPTION -->
                     <div class="form-group">
-                         <textarea class="form-control" id="description" name="description" placeholder="Description" ></textarea>
+                      Description   <textarea class="form-control" id="description" name="description" placeholder="Description" >{{  article.getDescription }}</textarea>
                     </div>
 
-   <!-- 5eme ligne -->
-                    <div class="form-group" >
-                        <label > Ingredients :</label>
-                    </div>
-
-                       <div class="form-group" >
-                       {% if ingredients %}
-                           {% for obj in ingredients %}
-                        <input type="checkbox" id="oui" name="ingredients" value="{{ obj.id }}">
-                            <label for="{{ obj.id }}">{{ obj.getNom }}</label>
-
-                               <div class="col-sm-6">
-                        <input type="text" class="form-control" id="quantite1" name="quantite1" placeholder="Quantite utiliser" >
-                                </div>
-                           <br>
-                           {% endfor %}
-                       {% endif %}
-                       </div>
 
 
 
 <!-- 6eme ligne -->
                   <div class="form-group row justify-content-center">
                     <div class="col-sm-4">
-                 <button type="submit"  class=" btn btn-primary  btn-block ">Ajouter
+                 <button type="submit"  class=" btn btn-primary  btn-block ">Modifier
                       </button>
                     </div>
                     <div class="col-sm-4">
@@ -101,6 +94,8 @@
 
 
               </form>
+    {% endfor %}
+ {% endif %}
             </div>
 
 {% endblock %}

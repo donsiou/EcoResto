@@ -1,0 +1,29 @@
+{% extends "Sprint1/index.html" %}
+{% load static %}
+<title> {% block titre %} Gestion des Articles  {% endblock %}</title>
+
+{% block main %}
+<!-- Bar Chart -->{{ date }}
+
+
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Bilan </h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+{% endblock %}
+
+{% block script2 %}
+    <script type="text/javascript">
+
+</script>
+    <script src="{% static 'Sprint1/vendor/chart.js/Chart.min.js' %}"></script>
+
+    <script src="{% static 'Sprint1/js/demo/EcoResto_chart-bar-demo.js' %}"></script>
+ {% endblock %}

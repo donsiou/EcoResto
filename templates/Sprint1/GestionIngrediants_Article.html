@@ -1,0 +1,65 @@
+{% extends "Sprint1/index.html" %}
+<title> {% block titre %} Gestion des Ingrediants  {% endblock %}</title>
+
+{% block main %}
+          <!-- DataTales Example -->
+            <div class="card-header py-3">
+              <div class="row ">
+                <div class="col">
+              <h6 class="m-0 font-weight-bold text-primary"> Gestion des Ingrediants </h6>
+            </div>
+            <div class="col d-flex justify-content-end"><a href="Ajouter_Ingrediant"> <i class="fa fa-plus"></i> </a>  </div>
+            </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+
+                  <form class="user p-3" method="POST" action="#"><!-- Ajouté dans ce form une liste d'ou on peut selectionné les ingredients qu'on veut associe a cet article -->
+                  {% csrf_token %}
+                       <div class="form-group" >
+                       {% if ingredient_list %}
+                           {% for obj in ingredient_list %}
+                        <input type="checkbox" id="ingredients" name="ingredients" value="{{ obj.id }}">
+                            <label for="{{ obj.id }}">{{ obj.getNom }}</label>
+                        <br>
+                               <div class="col-sm-6">
+                      <input type="text" class="form-control" id="quan" name="quan" placeholder="Quantite utiliser" >
+                                </div>
+                        {% endfor %}
+                       {% endif %}
+                       </div>
+                        <br><br>
+                        {% if article_list %}
+                       <div class="form-group" >
+
+                           {% for ob in article_list %}
+                        <input type="checkbox" id="article_list" name="article_list" value="{{ ob.id }}">
+                            <label for="{{ ob.id }}">{{ ob.getNom }}</label>
+                        <br>
+
+                        {% endfor %}
+
+                       </div>
+                        {% endif %}
+                                        <div class="form-group row justify-content-center">
+                    <div class="col-sm-4">
+                 <a href="addIngredToArticle?id={{ ob.id }}><button type="submit"  class=" btn btn-primary  btn-block ">Ajouter
+                      </button></a>
+                    </div>
+                    <div class="col-sm-4">
+                      <a href="#" class="btn btn-secondary  btn-block">Annuler
+                      </a>
+                    </div>
+
+                  </div>
+                  </form>
+
+
+              </div>
+            </div>
+
+{% endblock %}
+
+
+
+
