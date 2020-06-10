@@ -1,72 +1,44 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
 
+
+
 class Utilisateur(models.Model):
-    """docstring for Utilisateur"""
-    _password = models.CharField(max_length=100, null=False, blank=False)
-    _login = models.CharField(max_length=100, unique=True, blank=False, null=False)
-    _nom = models.CharField(max_length=100, null=False, blank=False)
-    _prenom = models.CharField(max_length=100, null=False, blank=False)
-    _dateNaissance = models.DateField(null=False, blank=False)
-    _dateInscription = models.DateField(null=False, default=timezone.now)
-    _nationalite = models.CharField(max_length=100)
-    _email = models.EmailField(max_length=255, null=False, blank=False)
-    _profession = models.CharField(max_length=100)
+    #Ici on a utilisé une liaison avec la classe User définit par défaut en django, afin de pouvoir géréer
+    # les utilisateurs et les sessions facillement
+    # La classe User conient déja les attributs de base pour un utilisateur :
+        # username, password, email, first_name, last_name, date_joined
+    # Donc inutile de les redéfinir  une autre fois dans notre classe !
 
-    def __del__(self):
-        print("je suis le destructeur")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    dateNaissance = models.DateField(null=True)
+    nationalite = models.CharField(max_length=100)
+    profession = models.CharField(max_length=100)
 
-    # constructeur par defeaut c'est le  mm que par initalization 2 on 1
-    def __init__(self, login="", password="", nom="", prenom="", nationalite="", email=""):
-        self._password = password
-        self._login = login
-        self._nom = nom
-        self._prenom = prenom
-        self._nationalite = nationalite
-        self._email = email
-        self._profession = profession
-        self._tel = tel
+    #Pour les contructeurs et les destructeurs django par défaut les crée pour nous, et qu'on a essayé de les redéfinir
+    # cela nous causé beaucoup de problémes
 
-    # comme constructeur par recopie
-
-    def clone(self, u):
-        self._password = u._password
-        self._login = u._login
-        self._nom = u._nom
-        self._prenom = u._prenom
-        self._nationalite = u._nationalite
-        self._email = u._email
-        self._profession = u._profession
-        self._tel = u._tel
-
+    # On était obligé de mettre exist comme une méthode exist comme static à fin de pouvoir l'appelé dans les méthode
+    # autentification et inscription qui sont statiques
     @staticmethod
-    def authentification(self, login, password):
-        pass
-
-    def inscription(self):
-        raise  # ( ' methode abstraite ' )
-
-    def exist(self, tabUsers):
-        for u in tabUsers:
-            if self._login == u.getLogin() and self._password == u.getPassword():
-                return True
-            else:
-                return False
+    def exist(username):
+        i = User.objects.filter(username__iexact=username)
+        return i.count() > 0
 
     def supprimer(self, tabUser):
-        i = 0
-        for u in tabUser:
-
-            if self.exist(tabUser):
-                tabUser.pop(i)
-                return True
-            else:
-                return False
-            i = i + 1
+        if not Utilisateur.exist(self.user.username):
+            return False
+        self.save()
+        return True
 
     def modifier(self):
-        pass
+        if not Utilisateur.exist(self.user.username):
+            return False
+        self.delete()
+        return True
 
     # mutateurs et accesseurs
     def getPassword(self):

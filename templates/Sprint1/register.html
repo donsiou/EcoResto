@@ -38,8 +38,8 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Créer un compte!</h1>
               </div>
-              <form class="user" method="POST" action="#">
-                  
+              <form class="user" method="POST" action="/inscription">
+                  {% csrf_token %}
 
                 <div class="form-group row">
 <!-- nom -->               

@@ -24,5 +24,5 @@ urlpatterns = {
     path('sprint1/', include('Sprint1.urls')),
     path('Login',views.Login,name='Login'),
     path('Register',views.Register,name='Register'),
-
+    path('inscription',views.inscription,name='inscription'),
 }

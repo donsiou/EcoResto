@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import path
 from Sprint1 import views
 
@@ -10,7 +11,6 @@ urlpatterns = [
     path('Articles', views.Articles),
     path('Ingrediants', views.Ingrediants),
     path('Ajouter_Ingrediant', views.Ajouter_Ingrediant),
-
-
-
+    path('authentification', views.authentification),
+    path('espace/<int:id>/', views.espace),
 ]

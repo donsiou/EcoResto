@@ -1,3 +1,6 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+
 from Sprint1.models.utilisateur import Utilisateur
 from django.db import models
 
@@ -5,28 +8,34 @@ from django.db import models
 class Accueil(Utilisateur):
     """docstring for Accueil"""
 
-    _tel = models.CharField(max_length=20, null=True)
-
-    def __del__(self):
-        Utilisateur.__del__(self)
-
-    def __init__(self, login, password):
-        Utilisateur.__init__(self, login, password)
+    tel = models.CharField(max_length=20, null=True)
 
     @staticmethod
-    def authentification(self, login, password):
-        Utilisateur.authentification(self, login, password)
+    def authentification(login, password):
+        from Sprint1.models import Admin, client, desserte, accueil
+        user = authenticate(username=login, password=password)
+        if user:
+            id = user.id
+            u = Accueil.objects.filter(user_id=id)
+            if u.count() > 0:
+                return u[0]
+        return None
 
-    def inscription(self, login, password, userTab):
-        pass
+    @staticmethod
+    def inscription(username, email, password, dateNaissance=None, nationalite="", profession="", tel=""):
+        if Utilisateur.exist(username):
+            return False
 
-    def exist(self):
-        pass
+        user = User.objects.create_user(username, email, password)
 
-    def supprimer(self):
-        pass
-
-    def modifier(self):
-        pass
+        u = Accueil(user=user, dateNaissance=dateNaissance, nationalite=nationalite, profession=profession, tel=tel)
+        user.save()
+        u.save()
+        return True
 
 # mutateurs et accesseurs
+    def getTel(self):
+        return self.tel
+
+    def setTel(self, value):
+        self.tel = value

@@ -1,36 +1,37 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+
 from Sprint1.models.utilisateur import Utilisateur
 from django.db import models
 
 
 class Client(Utilisateur):
     """docstring for Client"""
-    _etablissement = models.CharField(max_length=20, null=False)
+    etablissement = models.CharField(max_length=20, null=False)
 
-    def __del__(self):
-        Utilisateur.__del__(self)
-
-    def __init__(self, login, password, etablissement):
-        Utilisateur.__init__(self)
-        self._etablissement = etablissement
 
     @staticmethod
-    def authentification(self, login, password):
-        Utilisateur.authentification(self, login, password)
+    def authentification(login, password):
+        from Sprint1.models import Admin, client, desserte, accueil
+        user = authenticate(username=login, password=password)
+        if user:
+            id = user.id
+            u = Client.objects.filter(user_id=id)
+            if u.count() > 0:
+                return u[0]
+        return None
 
-    def inscription(self, userTab):
-        if (self.exist(userTab) != True):
-            print("")  # requete SQL
-        else:
-            print("Vous etes deja presant dans BD")
+    @staticmethod
+    def inscription(username, email, password, dateNaissance=None, nationalite="", profession="", etablissement=""):
+        if Utilisateur.exist(username):
+            return False
 
-    def exist(self):
-        pass
+        user = User.objects.create_user(username, email, password)
 
-    def supprimer(self):
-        pass
-
-    def modifier(self):
-        pass
+        u = Client(user=user, dateNaissance=dateNaissance, nationalite=nationalite, profession=profession, etablissement=etablissement)
+        user.save()
+        u.save()
+        return True
 
     def commenter(self):
         pass
@@ -40,7 +41,7 @@ class Client(Utilisateur):
 
     # mutateurs et accesseurs
     def getEtablissement(self):
-        return self._etablissement
+        return self.etablissement
 
     def setEtablissement(self, value):
-        self._etablissement = value
+        self.etablissement = value
